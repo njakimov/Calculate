@@ -51,7 +51,7 @@ public class SecondActivity extends AppCompatActivity {
                 } else {
                     dayText = String.valueOf(dayOfMonth);
                 }
-                editTextDate.setText(String.valueOf(dayText) + '.' + monthText + '.' + String.valueOf(year));
+                editTextDate.setText(dayText + '.' + monthText + '.' + year);
             }
         });
     }
