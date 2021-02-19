@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Calculate</string>
+    <string name="lblField2">Введите значение</string>
+    <string name="lblField1">Введите значение</string>
+    <string name="lblResult">Результат вычисления</string>
+    <string name="lblCalc">Вычислить</string>
+    <string name="hintLblField1">Введите значение</string>
+    <string name="hintLblField2">Введите значение</string>
+    <string name="tglBtnChecBox">Вкл/выкл чек бокс</string>
+    <string name="swCheckBox">Переключить чек боксы</string>
+    <string name="chkbxFirst">Первый чек бокс</string>
+    <string name="chkbxSecond">Второй чек бокс</string>
+    <string name="lblBtnSecond">To Second</string>
+    <string name="lblBtnToMain">To Main</string>
+</resources>
