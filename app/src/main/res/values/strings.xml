@@ -25,4 +25,11 @@
     <string name="_8">8</string>
     <string name="_9">9</string>
     <string name="_point">.</string>
+    <string name="key_division">/</string>
+    <string name="key_multi">*</string>
+    <string name="key_back">del</string>
+    <string name="key_c">C</string>
+    <string name="key_sum">+</string>
+    <string name="key_minus">-</string>
+    <string name="key_result">=</string>
 </resources>
