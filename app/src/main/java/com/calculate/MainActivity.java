@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         final TextView viewResult = findViewById(R.id.txtResult);
         Button btnCalc = findViewById(R.id.btnCalc);
         Button btnToSecond = findViewById(R.id.btnToSecond);
+        Button btnToCalc = findViewById(R.id.btnToCalc);
         final Switch swCheckBox = findViewById(R.id.switch1);
         final CheckBox checkBox1 = findViewById(R.id.checkBox1);
         final CheckBox checkBox2 = findViewById(R.id.checkBox2);
@@ -62,6 +63,21 @@ public class MainActivity extends AppCompatActivity {
                     Log.w("MOVE", "На вторую активити");
 //                    setContentView(R.layout.activity_second);
                     Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                    startActivity(intent);
+                } catch (Exception ex) {
+                    Log.e("MOVE", "Получено исключение");
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        btnToCalc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Log.w("MOVE", "На третью активити");
+//                    setContentView(R.layout.activity_second);
+                    Intent intent = new Intent(MainActivity.this, CalcActivity.class);
                     startActivity(intent);
                 } catch (Exception ex) {
                     Log.e("MOVE", "Получено исключение");

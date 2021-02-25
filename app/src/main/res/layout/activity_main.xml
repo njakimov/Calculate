@@ -77,15 +77,24 @@
             tools:layout_editor_absoluteX="2dp"
             tools:ignore="MissingConstraints" app:layout_constraintTop_toBottomOf="@+id/checkBox2"/>
     <Button
+            android:text="@string/lblBtnCalc"
+            android:layout_width="85dp"
+            android:layout_height="54dp"
+            android:id="@+id/btnToCalc"
+            app:layout_constraintStart_toEndOf="@+id/tglCheckbox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.122"
+            tools:ignore="MissingConstraints" app:layout_constraintTop_toBottomOf="@+id/btnToSecond2"
+            app:layout_constraintBottom_toTopOf="@+id/txtField1"/>
+    <Button
             android:text="@string/lblBtnSecond"
             android:layout_width="85dp"
             android:layout_height="54dp"
             android:id="@+id/btnToSecond"
-            tools:layout_editor_absoluteY="-10dp"
             app:layout_constraintStart_toEndOf="@+id/tglCheckbox"
             android:layout_marginLeft="2dp"
             android:layout_marginStart="2dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            tools:ignore="MissingConstraints"/>
+            app:layout_constraintHorizontal_bias="0.102"
+            tools:ignore="MissingConstraints" app:layout_constraintTop_toTopOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
