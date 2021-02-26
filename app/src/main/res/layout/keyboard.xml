@@ -21,8 +21,7 @@
                     android:textSize="@dimen/key"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintVertical_chainStyle="packed"
-                    app:layout_constraintVertical_bias="0.3"
-
+                    app:layout_constraintVertical_bias="0.1"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/key_multi"
@@ -34,9 +33,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/key_multi"
                     android:textSize="@dimen/key"
-                    app:layout_constraintVertical_bias="0.3"
+                    app:layout_constraintVertical_bias="0.1"
                     app:layout_constraintTop_toTopOf="parent"
-
                     app:layout_constraintStart_toEndOf="@+id/key_c"
                     app:layout_constraintEnd_toStartOf="@id/key_division"
                     app:layout_constraintBottom_toTopOf="@id/key_2"
@@ -51,16 +49,11 @@
                     android:textSize="@dimen/key"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintVertical_chainStyle="packed"
-
-
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toTopOf="@id/key_3"
                     app:layout_constraintEnd_toStartOf="@id/key_back"
                     app:layout_constraintStart_toEndOf="@+id/key_multi"
-
-
-                    app:layout_constraintVertical_bias="0.3"/>
-
+                    app:layout_constraintVertical_bias="0.1"/>
             <Button
                     android:id="@+id/key_back"
                     android:layout_width="wrap_content"
@@ -69,15 +62,11 @@
                     android:textSize="@dimen/key"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintVertical_chainStyle="packed"
-
-
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toTopOf="@id/key_minus"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/key_division"
-
-
-                    app:layout_constraintVertical_bias="1.0"/>
+                    app:layout_constraintVertical_bias="1"/>
             <Button
                     android:id="@+id/key_1"
                     android:layout_width="wrap_content"
@@ -90,8 +79,6 @@
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintVertical_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
-
-
             />
             <Button
                     android:id="@+id/key_2"
@@ -111,7 +98,6 @@
                     android:layout_height="wrap_content"
                     android:text="@string/_3"
                     android:textSize="@dimen/key"
-
                     app:layout_constraintBottom_toTopOf="@id/key_6"
                     app:layout_constraintEnd_toStartOf="@id/key_minus"
                     app:layout_constraintStart_toEndOf="@+id/key_2"
@@ -123,7 +109,6 @@
                     android:layout_height="wrap_content"
                     android:text="@string/key_minus"
                     android:textSize="@dimen/key"
-
                     app:layout_constraintBottom_toTopOf="@+id/key_sum"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/key_3"
@@ -140,7 +125,6 @@
                     app:layout_constraintTop_toBottomOf="@id/key_1"
                     app:layout_constraintHorizontal_chainStyle="packed"
                     app:layout_constraintStart_toStartOf="parent"
-
             />
             <Button
                     android:id="@+id/key_5"

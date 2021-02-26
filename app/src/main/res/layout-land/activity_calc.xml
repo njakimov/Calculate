@@ -12,13 +12,13 @@
             android:id="@+id/imageView" android:scaleType="fitXY" android:alpha="1"
             android:src="@drawable/ic_launcher_background"/>
     <LinearLayout
-            android:orientation="vertical"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <TextView
                 android:id="@+id/tvResult"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
                 android:text="@string/editResultCalc"
                 android:textColor="#000000"
                 android:textStyle="bold"
@@ -27,7 +27,9 @@
                 android:background="@drawable/edit_text_style"
                 android:paddingRight="20dp"/>
 
-        <include android:layout_width="match_parent" android:layout_height="match_parent" layout="@layout/keyboard"
+        <include android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 layout="@layout/keyboard"
                  android:alpha="0"/>
 
     </LinearLayout>
