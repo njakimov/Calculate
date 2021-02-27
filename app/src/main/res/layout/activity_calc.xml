@@ -25,7 +25,9 @@
                 android:textSize="@dimen/tvResult"
                 android:gravity="bottom|end"
                 android:background="@drawable/edit_text_style"
-                android:paddingRight="20dp"/>
+                android:paddingRight="20dp"
+                android:scrollbars="horizontal|vertical"
+        />
 
         <include android:layout_width="match_parent" android:layout_height="match_parent" layout="@layout/keyboard"
                  android:alpha="0"/>

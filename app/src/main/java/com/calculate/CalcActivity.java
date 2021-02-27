@@ -141,11 +141,7 @@ public class CalcActivity extends AppCompatActivity {
     private final View.OnClickListener keyCClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            mFirst = "";
-            mSecond = "";
-            mResult = 0f;
-            mOperation = ' ';
-            setTvResult("0");
+            initCalc();
         }
     };
 
@@ -229,47 +225,52 @@ public class CalcActivity extends AppCompatActivity {
     private final View.OnClickListener keySumClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            if (mOperation == '!') return;
             mOperation = '+';
-            addCharToText("+");
+            addCharToText(" + ");
         }
     };
 
     private final View.OnClickListener keyMinusClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            if (mOperation == '!') return;
             mOperation = '-';
-            addCharToText("-");
+            addCharToText(" - ");
         }
     };
 
     private final View.OnClickListener keyDivisionClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            if (mOperation == '!') return;
             mOperation = '/';
-            addCharToText("/");
+            addCharToText(" / ");
         }
     };
 
     private final View.OnClickListener keyMultiClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+            if (mOperation == '!') return;
             mOperation = '*';
-            addCharToText("*");
+            addCharToText(" * ");
         }
     };
 
     private final View.OnClickListener keyBackClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            String text = tvResult.getText().toString();
+            if (mOperation == '!') return;
 
-            if (text.length() == 1) {
+            if (tvResultText.contains("=")) return;
+
+            if (tvResultText.length() == 1) {
                 mFirst = "";
                 setTvResult("0");
             } else if (
-                    text.charAt(text.length() - 1) != '+' && text.charAt(text.length() - 1) != '*' &&
-                            text.charAt(text.length() - 1) != '/' && text.charAt(text.length() - 1) != '-'
+                    tvResultText.charAt(tvResultText.length() - 1) != '+' && tvResultText.charAt(tvResultText.length() - 1) != '*' &&
+                            tvResultText.charAt(tvResultText.length() - 1) != '/' && tvResultText.charAt(tvResultText.length() - 1) != '-'
             ) {
                 if (mOperation == ' ') {
                     if (!mFirst.equals("")) {
@@ -280,11 +281,11 @@ public class CalcActivity extends AppCompatActivity {
                         mSecond = mSecond.substring(0, mSecond.length() - 1);
                     }
                 }
-                setTvResult(text.substring(0, text.length() - 1));
+                setTvResult(tvResultText.substring(0, tvResultText.length() - 1));
             } else {
                 mOperation = ' ';
                 mSecond = "";
-                setTvResult(text.substring(0, text.length() - 1));
+                setTvResult(tvResultText.substring(0, tvResultText.length() - 1));
             }
         }
     };
@@ -292,44 +293,113 @@ public class CalcActivity extends AppCompatActivity {
     private final View.OnClickListener keyResultClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            addCharToText("=");
-            switch (mOperation) {
-                case '+':
-                    mResult = Float.parseFloat(mFirst) + Float.parseFloat(mSecond);
-                    break;
-                case '-':
-                    mResult = Float.parseFloat(mFirst) - Float.parseFloat(mSecond);
-                    break;
-                case '*':
-                    mResult = Float.parseFloat(mFirst) * Float.parseFloat(mSecond);
-                    break;
-                case '/':
-                    mResult = Float.parseFloat(mFirst) / Float.parseFloat(mSecond);
-                    break;
-                default:
-                    mResult = 0;
+            if (mOperation == '!') return;
+
+            String resultText = "";
+            try {
+                if (!mFirst.equals("") && !mSecond.equals("")) {
+                    float first = Float.parseFloat(mFirst);
+                    float second = Float.parseFloat(mSecond);
+
+                    if (mOperation != ' ' && tvResultText.contains("=")) {
+                        first = mResult;
+                        mFirst = "" + mResult;
+                        setTvResult("" + mResult + mOperation + mSecond);
+                    }
+                    addCharToText(" = ");
+
+                    switch (mOperation) {
+                        case '+':
+                            mResult = first + second;
+                            break;
+                        case '-':
+                            mResult = first - second;
+                            break;
+                        case '*':
+                            mResult = first * second;
+                            break;
+                        case '/':
+                            if (mSecond.equals("0")) {
+                                throw new ArithmeticException("Деление на 0");
+                            }
+                            mResult = first / second;
+                            break;
+                        default:
+                            mResult = 0;
+                    }
+                    resultText = "" + mResult;
+                    if (resultText.equals("Infinity")) {
+                        throw new ArithmeticException("Переполнение");
+                    }
+                    resultText = splitZero(resultText);
+
+                }
+
+                addCharToText(resultText);
+            } catch (Exception ex) {
+                addCharToText(" : " + ex.getMessage());
+                mOperation = '!';
             }
 
-            setTvResult(String.format(Locale.getDefault(), "%f", mResult));
+
         }
     };
 
     /**
+     * Метод удаления 0, точек и запятых
+     *
+     * @param resultText - строка на обработку
+     * @return обработанная строка
+     */
+    private String splitZero(String resultText) {
+        boolean exist0 = false;
+        if (resultText.contains(".") || resultText.contains(",")) {
+            exist0 = true;
+        }
+        while (exist0) {
+            if (resultText.charAt(resultText.length() - 1) == '0' && resultText.length() != 1) {
+                resultText = resultText.substring(0, resultText.length() - 1);
+            } else if (resultText.charAt(resultText.length() - 1) == ',' || resultText.charAt(resultText.length() - 1) == '.') {
+                resultText = resultText.substring(0, resultText.length() - 1);
+                exist0 = false;
+            } else {
+                exist0 = false;
+            }
+        }
+        return resultText;
+    }
+
+    /**
      * Метод добавления символа к параметру
+     *
      * @param key - добавляемый символ
      */
     private void addCharToParam(String key) {
-        if (mOperation == ' ') {
-            mFirst += key;
+        if (tvResultText.contains("=")) {
+            initCalc();
+        }
+        if (mOperation == '!') {
+            return;
+        } else if (mOperation == ' ') {
+            if ((!key.equals(".") || !mFirst.contains(".")) && mFirst.length()<15) {
+                if (mFirst.length() == 0 && key.equals(".")) key = "0" + key;
+                mFirst += key;
+                addCharToText(key);
+            }
         } else {
-            mSecond += key;
+            if ((!key.equals(".") || !mSecond.contains(".")) && mSecond.length()<15) {
+                if (mSecond.length() == 0 && key.equals(".")) key = "0" + key;
+                mSecond += key;
+                addCharToText(key);
+            }
         }
 
-        addCharToText(key);
+
     }
 
     /**
      * Метод инициализации результирующего поля
+     *
      * @param key - добавляемый символ
      */
     private void addCharToText(String key) {
@@ -343,11 +413,23 @@ public class CalcActivity extends AppCompatActivity {
 
     /**
      * Метод заполнения итогового текстового поля
+     *
      * @param text - результат для записи в итоговое текстовое поле
      */
     private void setTvResult(String text) {
         tvResultText = text;
         tvResult.setText(text);
+    }
+
+    /**
+     * Метод инициализации калькулятора старновыми значениями
+     */
+    private void initCalc() {
+        mFirst = "";
+        mSecond = "";
+        mResult = 0f;
+        mOperation = ' ';
+        setTvResult("0");
     }
 
 }
