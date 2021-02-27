@@ -225,7 +225,7 @@ public class CalcActivity extends AppCompatActivity {
     private final View.OnClickListener keySumClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (mOperation == '!') return;
+            if (mOperation == '!' || mOperation != ' ' || mFirst.equals("")) return;
             mOperation = '+';
             addCharToText(" + ");
         }
@@ -234,7 +234,7 @@ public class CalcActivity extends AppCompatActivity {
     private final View.OnClickListener keyMinusClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (mOperation == '!') return;
+            if (mOperation == '!' || mOperation != ' ' || mFirst.equals("")) return;
             mOperation = '-';
             addCharToText(" - ");
         }
@@ -243,7 +243,7 @@ public class CalcActivity extends AppCompatActivity {
     private final View.OnClickListener keyDivisionClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (mOperation == '!') return;
+            if (mOperation == '!' || mOperation != ' ' || mFirst.equals("")) return;
             mOperation = '/';
             addCharToText(" / ");
         }
@@ -252,7 +252,8 @@ public class CalcActivity extends AppCompatActivity {
     private final View.OnClickListener keyMultiClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (mOperation == '!') return;
+            if (mOperation == '!' || mOperation != ' ' || mFirst.equals("")) return;
+
             mOperation = '*';
             addCharToText(" * ");
         }
