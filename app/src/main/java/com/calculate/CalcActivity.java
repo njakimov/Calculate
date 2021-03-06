@@ -380,10 +380,8 @@ public class CalcActivity extends AppCompatActivity {
                         throw new ArithmeticException("Переполнение");
                     }
                     resultText = splitZero(resultText);
-
+                    addCharToText(resultText);
                 }
-
-                addCharToText(resultText);
             } catch (Exception ex) {
                 addCharToText(" : " + ex.getMessage());
                 mOperation = '!';
