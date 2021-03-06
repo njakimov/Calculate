@@ -1,9 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Калькулятор</string>
-    <string name="lblField2">Введите значение</string>
-    <string name="lblField1">Введите значение</string>
-    <string name="lblResult">Результат вычисления</string>
-    <string name="lblCalc">Вычислить</string>
+    <string name="app_name">Calc</string>
+    <string name="lblField2">Input value</string>
+    <string name="lblField1">Input value</string>
+    <string name="lblResult">Rezult calc</string>
+    <string name="lblCalc">Calc</string>
     <string name="_0">0</string>
     <string name="_1">1</string>
     <string name="_2">2</string>
