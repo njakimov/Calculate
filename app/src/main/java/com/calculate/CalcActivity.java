@@ -262,9 +262,9 @@ public class CalcActivity extends AppCompatActivity {
     private final View.OnClickListener keySumClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (mOperation == '!' || mOperation != ' ') {
+            if (mOperation == '!' || mOperation != ' ' || (mFirst.equals(""))) {
                 return;
-            } else if (mFirst.contains("-") && mFirst.length()==1) {
+            } else if (mFirst.contains("-") && mFirst.length() == 1) {
                 initCalc();
             } else {
                 mOperation = '+';
@@ -276,7 +276,7 @@ public class CalcActivity extends AppCompatActivity {
     private final View.OnClickListener keyMinusClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (mOperation == '!' || mOperation != ' ') {
+            if (mOperation == '!' || mOperation != ' ' || (mFirst.contains("-") && mFirst.length() == 1)) {
                 return;
             } else if (mFirst.equals("")) {
                 addCharToParam("-");
