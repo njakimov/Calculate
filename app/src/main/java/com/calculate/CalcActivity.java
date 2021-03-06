@@ -262,18 +262,28 @@ public class CalcActivity extends AppCompatActivity {
     private final View.OnClickListener keySumClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (mOperation == '!' || mOperation != ' ' || mFirst.equals("")) return;
-            mOperation = '+';
-            addCharToText(" + ");
+            if (mOperation == '!' || mOperation != ' ') {
+                return;
+            } else if (mFirst.contains("-") && mFirst.length()==1) {
+                initCalc();
+            } else {
+                mOperation = '+';
+                addCharToText(" + ");
+            }
         }
     };
 
     private final View.OnClickListener keyMinusClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            if (mOperation == '!' || mOperation != ' ' || mFirst.equals("")) return;
-            mOperation = '-';
-            addCharToText(" - ");
+            if (mOperation == '!' || mOperation != ' ') {
+                return;
+            } else if (mFirst.equals("")) {
+                addCharToParam("-");
+            } else {
+                mOperation = '-';
+                addCharToText(" - ");
+            }
         }
     };
 
@@ -342,7 +352,7 @@ public class CalcActivity extends AppCompatActivity {
                     if (mOperation != ' ' && tvResultText.contains("=")) {
                         first = mResult;
                         mFirst = "" + mResult;
-                        setTvResult("" + mResult + mOperation + mSecond);
+                        setTvResult("" + splitZero("" + mResult) + mOperation + mSecond);
                     }
                     addCharToText(" = ");
 
@@ -366,7 +376,7 @@ public class CalcActivity extends AppCompatActivity {
                             mResult = 0;
                     }
                     resultText = "" + mResult;
-                    if (resultText.equals("Infinity")) {
+                    if (Float.isInfinite(mResult)) {
                         throw new ArithmeticException("Переполнение");
                     }
                     resultText = splitZero(resultText);
