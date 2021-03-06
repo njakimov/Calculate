@@ -22,4 +22,16 @@
     <string name="key_sum">+</string>
     <string name="key_minus">-</string>
     <string name="key_result">=</string>
+    <string name="editResultCalc">"0 "</string>
+    <string name="btnMoveToTest">Перейти в настройки</string>
+    <string name="loginName">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="material_black">Черная</string>
+    <string name="material_red">Красная</string>
+    <string name="material_default">Тема по умолчанию</string>
+    <string name="material_blue">Синяя</string>
+    <string name="not_name">Некорректные символы.</string>
+    <string name="weak_password">Кривой пароль</string>
+    <string name="tvSettingsCalc">Настройки темы калькулятора:</string>
+    <string name="btnSave">Сохранить настройки</string>
 </resources>

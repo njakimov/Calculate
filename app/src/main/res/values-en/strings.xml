@@ -23,4 +23,16 @@
     <string name="key_sum">+</string>
     <string name="key_minus">-</string>
     <string name="key_result">=</string>
+    <string name="editResultCalc">0</string>
+    <string name="btnMoveToTest">Move to settings</string>
+    <string name="loginName">Login</string>
+    <string name="password">Password</string>
+    <string name="material_black">Black</string>
+    <string name="material_red">Red</string>
+    <string name="material_default">Default theme</string>
+    <string name="not_name">Not correct simbol</string>
+    <string name="weak_password">Not correct pwd</string>
+    <string name="tvSettingsCalc">Settings theme calc</string>
+    <string name="material_blue">Blue</string>
+    <string name="btnSave">Save settings</string>
 </resources>

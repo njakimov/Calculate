@@ -1,13 +1,14 @@
 package com.calculate;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-
-import java.util.Locale;
 
 public class CalcActivity extends AppCompatActivity {
 
@@ -17,6 +18,13 @@ public class CalcActivity extends AppCompatActivity {
     //  3. * Создайте макет калькулятора для горизонтальной ориентации экрана и отображайте его в
     //      ландшафтной ориентации.
 
+
+    // lesson4
+    //  1. Переделайте все кнопки на материал.
+    //  2. Все размеры и строки сделайте ресурсами.
+    //  3. Создайте стиль для своего приложения.
+    //  4. * Создайте светлую и тёмную тему для приложения.
+
     public static final String NAME_ACTIVITY = "CalcActivity";
 
     public static final String KEY_FIRST = NAME_ACTIVITY + ".mFirst";
@@ -25,6 +33,7 @@ public class CalcActivity extends AppCompatActivity {
     public static final String KEY_OPERATION = NAME_ACTIVITY + ".mOperation";
     public static final String KEY_TV_RESULT = NAME_ACTIVITY + ".tvResult";
 
+    public static final String KEY_NAME = "our.prefix.user.name";
 
     private String mFirst = "";
     private String mSecond = "";
@@ -32,11 +41,16 @@ public class CalcActivity extends AppCompatActivity {
     private float mResult = 0;
     private char mOperation = ' ';
     TextView tvResult;
+    Intent mItMoveToTest;
 
+    // Имя настроек
+    private static final String NameSharedPreference = "CALC";
+    private static final String appTheme = "APP_THEME";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(getAppTheme(-1));
         setContentView(R.layout.activity_calc);
 
         Button key0 = findViewById(R.id.key_0);
@@ -79,6 +93,20 @@ public class CalcActivity extends AppCompatActivity {
         keyResult.setOnClickListener(keyResultClickListener);
         keyPoint.setOnClickListener(keyPointClickListener);
 
+        mItMoveToTest = new Intent(this, SettingsActivity.class);
+
+        Button btnMoveToTest = findViewById(R.id.btnMoveToTest);
+        btnMoveToTest.setOnClickListener(moveToTestClickListener);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.e(NAME_ACTIVITY, "onActivityResult() ");
+        if (data != null && resultCode == RESULT_OK) {
+            recreate();
+        }
     }
 
     @Override
@@ -114,6 +142,7 @@ public class CalcActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Log.e(NAME_ACTIVITY, "onDestroy() ");
     }
 
     @Override
@@ -137,6 +166,14 @@ public class CalcActivity extends AppCompatActivity {
         mFirst = state.getString(KEY_FIRST);
         setTvResult(state.getString(KEY_TV_RESULT));
     }
+
+    private final View.OnClickListener moveToTestClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            startActivityForResult(mItMoveToTest, 1);
+        }
+    };
 
     private final View.OnClickListener keyCClickListener = new View.OnClickListener() {
         @Override
@@ -382,13 +419,13 @@ public class CalcActivity extends AppCompatActivity {
         if (mOperation == '!') {
             return;
         } else if (mOperation == ' ') {
-            if ((!key.equals(".") || !mFirst.contains(".")) && mFirst.length()<15) {
+            if ((!key.equals(".") || !mFirst.contains(".")) && mFirst.length() < 15) {
                 if (mFirst.length() == 0 && key.equals(".")) key = "0" + key;
                 mFirst += key;
                 addCharToText(key);
             }
         } else {
-            if ((!key.equals(".") || !mSecond.contains(".")) && mSecond.length()<15) {
+            if ((!key.equals(".") || !mSecond.contains(".")) && mSecond.length() < 15) {
                 if (mSecond.length() == 0 && key.equals(".")) key = "0" + key;
                 mSecond += key;
                 addCharToText(key);
@@ -431,6 +468,16 @@ public class CalcActivity extends AppCompatActivity {
         mResult = 0f;
         mOperation = ' ';
         setTvResult("0");
+    }
+
+    private int getAppTheme(int codeStyle) {
+        return SettingsActivity.codeStyleToStyleId(getCodeStyle(codeStyle));
+    }
+
+    // Чтение настроек, параметр «тема»
+    private int getCodeStyle(int codeStyle) {
+        SharedPreferences sharedPref = getSharedPreferences(NameSharedPreference, MODE_PRIVATE);                        // Работаем через специальный класс сохранения и чтения настроек
+        return sharedPref.getInt(appTheme, codeStyle);                                                                  //Прочитать тему, если настройка не найдена - взять по умолчанию
     }
 
 }
