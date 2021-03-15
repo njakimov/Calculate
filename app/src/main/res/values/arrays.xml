@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="version_names">
+        <item>v1</item>
+        <item>v2</item>
+        <item>v3</item>
+    </string-array>
+    <integer-array name="version_logos">
+        <item>@drawable/m1</item>
+        <item>@drawable/m2</item>
+        <item>@drawable/m3</item>
+    </integer-array>
+
+</resources>

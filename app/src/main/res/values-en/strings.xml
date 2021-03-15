@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Calc</string>
+    <string name="lblField2">Input value</string>
+    <string name="lblField1">Input value</string>
+    <string name="lblResult">Rezult calc</string>
+    <string name="lblCalc">Calc</string>
+    <string name="_0">0</string>
+    <string name="_1">1</string>
+    <string name="_2">2</string>
+    <string name="_3">3</string>
+    <string name="_4">4</string>
+    <string name="_5">5</string>
+    <string name="_6">6</string>
+    <string name="_7">7</string>
+    <string name="_8">8</string>
+    <string name="_9">9</string>
+    <string name="_point">.</string>
+    <string name="key_division">/</string>
+    <string name="key_multi">*</string>
+    <string name="key_back">del</string>
+    <string name="key_c">C</string>
+    <string name="key_sum">+</string>
+    <string name="key_minus">-</string>
+    <string name="key_result">=</string>
+    <string name="editResultCalc">0</string>
+    <string name="btnMoveToTest">Move to settings</string>
+    <string name="loginName">Login</string>
+    <string name="password">Password</string>
+    <string name="material_black">Black</string>
+    <string name="material_red">Red</string>
+    <string name="material_default">Default theme</string>
+    <string name="not_name">Not correct simbol</string>
+    <string name="weak_password">Not correct pwd</string>
+    <string name="tvSettingsCalc">Settings theme calc</string>
+    <string name="material_blue">Blue</string>
+    <string name="btnSave">Save settings</string>
+</resources>
