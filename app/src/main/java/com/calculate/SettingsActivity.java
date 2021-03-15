@@ -92,7 +92,7 @@ public class SettingsActivity extends AppCompatActivity {
             case AppThemeMaterialBlack:
                 return R.style.MyCoolStyle;
             default:
-                return 0;
+                return R.style.AppThemeOrange;
         }
     }
 
